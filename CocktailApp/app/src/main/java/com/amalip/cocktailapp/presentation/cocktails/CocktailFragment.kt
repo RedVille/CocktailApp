@@ -2,8 +2,13 @@ package com.amalip.cocktailapp.presentation.cocktails
 
 import android.os.Bundle
 import android.view.View
+import android.widget.GridLayout
+import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.amalip.cocktailapp.MainActivity
 import com.amalip.cocktailapp.R
 import com.amalip.cocktailapp.core.extension.failure
 import com.amalip.cocktailapp.core.extension.observe
@@ -90,9 +95,16 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
         binding.lifecycleOwner = this
     }
 
+    var listlinear: Boolean = true
     // cambiar a grid
     fun onSwitch() {
-        binding.rcCocktails.layoutManager
+        if (listlinear) {
+            listlinear = false
+            binding.rcCocktails.layoutManager = GridLayoutManager(MainActivity(), 3)
+        } else{
+            listlinear = true
+            binding.rcCocktails.layoutManager = LinearLayoutManager(MainActivity(),LinearLayoutManager.VERTICAL,false)
+        }
     }
 
 }
