@@ -2,6 +2,7 @@ package com.amalip.cocktailapp.presentation.cocktails
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import com.amalip.cocktailapp.R
 import com.amalip.cocktailapp.core.extension.failure
@@ -26,11 +27,42 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        searchByName("")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setListeners()
+    }
+
+    private fun setListeners() {
+        binding.fabSwitch.setOnClickListener { onSwitch() }
+
+        binding.svCocktail.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    searchByName(query)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchByName(newText)
+                }
+                return false
+            }
+
+        })
+    }
+
+    fun searchByName(name: String) {
         cocktailViewModel.apply {
             observe(state, ::onViewStateChanged) // llama a la función cuando el stado de la vista cambia
             failure(failure, ::handleFailure) // llama la función cuando detecta un error
 
-            doGetCocktailsByName("")
+            doGetCocktailsByName(name)
         }
     }
 
@@ -58,5 +90,9 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
         binding.lifecycleOwner = this
     }
 
+    // cambiar a grid
+    fun onSwitch() {
+        binding.rcCocktails.layoutManager
+    }
 
 }
