@@ -28,7 +28,11 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
     private lateinit var binding: CocktailFragmentBinding
 
     private lateinit var adapter: CocktailAdapter
+    private lateinit var adapterGrid: CocktailAdapterGrid
+
     private val cocktailViewModel by viewModels<CocktailViewModel>()
+
+    var listlinear: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,16 +50,20 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
         binding.svCocktail.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.rcCocktails.layoutManager = LinearLayoutManager(requireContext())
                 if (query != null) {
                     searchByName(query)
                 }
+
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                binding.rcCocktails.layoutManager = LinearLayoutManager(requireContext())
                 if (newText != null) {
                     searchByName(newText)
                 }
+
                 return false
             }
 
@@ -80,8 +88,10 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
 
     private fun setUpAdapter(cocktails: List<Cocktail>) {
         adapter = CocktailAdapter()
+        adapterGrid = CocktailAdapterGrid()
 
         adapter.addData(cocktails)
+        adapterGrid.addData(cocktails)
 
         binding.rcCocktails.apply {
             adapter = this@CocktailFragment.adapter
@@ -95,15 +105,23 @@ class CocktailFragment : BaseFragment(R.layout.cocktail_fragment) {
         binding.lifecycleOwner = this
     }
 
-    var listlinear: Boolean = true
     // cambiar a grid
     fun onSwitch() {
         if (listlinear) {
             listlinear = false
             binding.rcCocktails.layoutManager = GridLayoutManager(MainActivity(), 3)
+
+            binding.rcCocktails.apply {
+                adapter = this@CocktailFragment.adapterGrid
+            }
+
         } else{
             listlinear = true
             binding.rcCocktails.layoutManager = LinearLayoutManager(MainActivity(),LinearLayoutManager.VERTICAL,false)
+
+            binding.rcCocktails.apply {
+                adapter = this@CocktailFragment.adapter
+            }
         }
     }
 
