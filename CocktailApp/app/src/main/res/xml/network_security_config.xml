@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
 
-    <!-- Archivo para las nuevas versiones de android
-    Dominio al que podemos acceder
-            - Para las rutas -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">thecocktaildb.com</domain>
     </domain-config>

@@ -5,5 +5,7 @@
     <string name="text_account">Account</string>
 
     <string name="failure_response">Error al hacer la llamada con el servidor</string>
+    <string name="text_query_hint">Cocktail name</string>
+    <string name="text_not_found">There is no info</string>
 
 </resources>

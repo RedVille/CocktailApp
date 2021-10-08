@@ -17,7 +17,7 @@
         android:layout_margin="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
@@ -25,7 +25,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/txvName"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:loadFromUrl="@{item.urlThumb}"
@@ -35,22 +36,23 @@
                 android:id="@+id/txvName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:ellipsize="end"
+                android:lines="1"
                 android:text="@{item.name}"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="@id/imgCocktail"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/imgCocktail"
+                app:layout_constraintStart_toStartOf="@id/imgCocktail"
                 app:layout_constraintTop_toBottomOf="@id/imgCocktail"
-                tools:text="Cerveza" />
+                tools:text="Cervezaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
 
             <ImageView
                 android:id="@+id/imgFavorite"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_star"
-                app:layout_constraintEnd_toEndOf="@id/imgCocktail"
-                app:layout_constraintTop_toTopOf="@id/imgCocktail"/>
+                app:layout_constraintEnd_toEndOf="@id/txvName"
+                app:layout_constraintTop_toTopOf="@id/imgCocktail" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

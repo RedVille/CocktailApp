@@ -22,7 +22,6 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), OnFa
     }
 
     abstract fun setBinding(view: View)
-
     //region progress
     // mostrar o no el Loading xml
     open fun onViewStateChanged(state: BaseViewState?) {
@@ -38,7 +37,6 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), OnFa
 
     //region failures
     fun showToast(message: String) = Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-
     // dependiendo del fallo se hace algo
     override fun handleFailure(failure: Failure?) {
         when(failure) {
@@ -63,5 +61,4 @@ abstract class BaseFragment(@LayoutRes layoutId: Int) : Fragment(layoutId), OnFa
         }
     }
     //endregion
-
 }

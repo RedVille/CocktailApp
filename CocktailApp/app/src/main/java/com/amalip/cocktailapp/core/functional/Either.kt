@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.amalip.cocktailapp.core.functional
 
 /**
@@ -49,7 +50,6 @@ sealed class Either<out L, out R> {
     val isLeft get() = this is Left<L>
 
     // crear left o right
-
     /**
      * Creates a Left type.
      * @see Left

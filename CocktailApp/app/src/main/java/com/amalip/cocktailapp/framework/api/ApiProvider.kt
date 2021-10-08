@@ -1,4 +1,4 @@
-package com.amalip.cocktailapp.framework
+package com.amalip.cocktailapp.framework.api
 
 import com.amalip.cocktailapp.BuildConfig
 import okhttp3.OkHttpClient

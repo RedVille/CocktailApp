@@ -1,4 +1,4 @@
-package com.amalip.cocktailapp.framework
+package com.amalip.cocktailapp.framework.api
 
 import com.amalip.cocktailapp.core.exception.Failure
 import com.amalip.cocktailapp.core.functional.Either
@@ -7,7 +7,6 @@ import retrofit2.Call
 import java.lang.Exception
 
 interface ApiRequest {
-
     // tipo de llamada y la respuesta
     fun <T, R> makeRequest(
         networkHandler: NetworkHandler,

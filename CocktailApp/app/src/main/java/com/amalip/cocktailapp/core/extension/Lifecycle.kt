@@ -4,11 +4,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.amalip.cocktailapp.core.exception.Failure
-
-/**
- * Created by Amalip on 8/21/2021.
- */
-
 // observadores de los datos utilizados en el ViewModel
 // Función de extención
 

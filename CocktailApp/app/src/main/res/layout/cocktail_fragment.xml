@@ -12,9 +12,12 @@
             android:id="@+id/svCocktail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:inputType="textFilter"
+            app:iconifiedByDefault="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:queryHint="@string/text_query_hint" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swpRefresh"
@@ -29,6 +32,7 @@
                 android:id="@+id/rcCocktails"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
                 tools:listitem="@layout/row_cocktail" />
@@ -36,15 +40,19 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabSwitch"
+            android:id="@+id/fabSwapView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_switch"
-            app:borderWidth="0dp"
-            android:layout_margin="5dp"
+            android:layout_margin="16dp"
             android:backgroundTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:src="@drawable/ic_swap"
+            app:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <include
+            android:id="@+id/emptyView"
+            layout="@layout/empty_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
